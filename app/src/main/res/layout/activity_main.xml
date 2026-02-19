@@ -45,7 +45,21 @@
             android:id="@+id/btnImplicit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Start Activity Implicitly" />
+            android:text="Start Activity Implicitly"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/btnStartService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start Service"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnSendBroadcast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send Broadcast" />
 
     </LinearLayout>
 
