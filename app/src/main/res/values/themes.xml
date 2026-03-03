@@ -2,8 +2,15 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.CS712AndroidApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
     <style name="Theme.CS712AndroidApp" parent="Base.Theme.CS712AndroidApp" />
+
+    <!-- New emerald-green theme reused from MyExpenses -->
+    <style name="Theme.MyExpensesStyle" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#50C878</item>
+        <item name="colorPrimaryContainer">#2E8B57</item>
+        <item name="colorSecondary">#A3D9A5</item>
+        <item name="colorSecondaryContainer">#357D44</item>
+    </style>
 </resources>
