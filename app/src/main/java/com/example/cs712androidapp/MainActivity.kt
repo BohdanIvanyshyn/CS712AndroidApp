@@ -30,10 +30,15 @@ class MainActivity : AppCompatActivity() {
         val btnImplicit = findViewById<Button>(R.id.btnImplicit)
         val btnStartService = findViewById<Button>(R.id.btnStartService)
         val btnSendBroadcast = findViewById<Button>(R.id.btnSendBroadcast)
+        val btnThird = findViewById<Button>(R.id.btnThird)
 
         // Explicit intent
         btnExplicit.setOnClickListener {
             startActivity(Intent(this, SecondActivity::class.java))
+        }
+
+        btnThird.setOnClickListener {
+            startActivity(Intent(this, ThirdActivity::class.java))
         }
 
         // Implicit intent
