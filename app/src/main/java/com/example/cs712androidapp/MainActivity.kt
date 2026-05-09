@@ -2,11 +2,13 @@ package com.example.cs712androidapp
 
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.content.ContextCompat
@@ -15,10 +17,22 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var receiver: MyBroadcastReceiver
 
+    private val PERMISSION_REQUEST_CODE = 1
+    private val CUSTOM_PERMISSION = "com.example.cs712androidapp.MSE712"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        if (ContextCompat.checkSelfPermission(this, CUSTOM_PERMISSION)
+            != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(CUSTOM_PERMISSION),
+                PERMISSION_REQUEST_CODE
+            )
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -34,7 +48,10 @@ class MainActivity : AppCompatActivity() {
 
         // Explicit intent
         btnExplicit.setOnClickListener {
-            startActivity(Intent(this, SecondActivity::class.java))
+            if (ContextCompat.checkSelfPermission(this, CUSTOM_PERMISSION)
+                == PackageManager.PERMISSION_GRANTED) {
+                startActivity(Intent(this, SecondActivity::class.java))
+            }
         }
 
         btnThird.setOnClickListener {
@@ -43,7 +60,10 @@ class MainActivity : AppCompatActivity() {
 
         // Implicit intent
         btnImplicit.setOnClickListener {
-            startActivity(Intent("com.example.cs712androidapp.OPEN_SECOND"))
+            if (ContextCompat.checkSelfPermission(this, CUSTOM_PERMISSION)
+                == PackageManager.PERMISSION_GRANTED) {
+                startActivity(Intent("com.example.cs712androidapp.OPEN_SECOND"))
+            }
         }
 
         // Start foreground service safely

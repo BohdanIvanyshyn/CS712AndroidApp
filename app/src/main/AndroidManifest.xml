@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.cs712androidapp">
 
+    <permission
+        android:name="com.example.cs712androidapp.MSE712"
+        android:protectionLevel="dangerous" />
+
+    <uses-permission android:name="com.example.cs712androidapp.MSE712" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
@@ -21,7 +26,8 @@
         <!-- Second activity with implicit intent -->
         <activity
             android:name=".SecondActivity"
-            android:exported="true">
+            android:exported="true"
+            android:permission="com.example.cs712androidapp.MSE712">
             <intent-filter>
                 <action android:name="com.example.cs712androidapp.OPEN_SECOND" />
                 <category android:name="android.intent.category.DEFAULT" />
